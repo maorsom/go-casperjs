@@ -74,7 +74,7 @@ func (c *Casper) ParseString(content string,data CasperData){
 
 func (c *Casper) Close() {
 	c.script.Close()
-	//os.Remove(c.script.Name())
+	os.Remove(c.script.Name())
 }
 
 func (c *Casper) Run() {
