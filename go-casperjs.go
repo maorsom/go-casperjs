@@ -22,8 +22,6 @@ type CasperData interface {
 	Execute()
 }
 
-func (u Url) Execute() {}
-
 func (c *Casper) Create() {
 	var err error
 	c.script, err = ioutil.TempFile(os.TempDir(), "go_casperjs_")
