@@ -1,7 +1,6 @@
 package go_casperjs
 
 import (
-	"bufio"
 	"io/ioutil"
 	"os"
 	"os/exec"
@@ -13,9 +12,7 @@ const templateName = "CasperJS"
 type Casper struct {
 	script         *os.File
 	template       *template.Template
-	bufferedWriter *bufio.Writer
-	output         string
-	deleteFile     bool
+	Output         string
 }
 
 type CasperData interface {
@@ -57,5 +54,5 @@ func (c *Casper) Run() {
 		panic(err)
 	}
 
-	c.output = string(out)
+	c.Output = string(out)
 }
