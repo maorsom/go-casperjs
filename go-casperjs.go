@@ -9,14 +9,13 @@ import (
 
 const (
 	templateName = "CasperJS"
-	commandName = "casperjs"
+	commandName  = "casperjs"
 )
 
-
 type Casper struct {
-	script         *os.File
-	template       *template.Template
-	Output         string
+	script   *os.File
+	template *template.Template
+	Output   string
 }
 
 type CasperData interface {
@@ -25,12 +24,13 @@ type CasperData interface {
 
 type CasperTemplate struct {
 	Name string
-	Dir string
+	Dir  string
 	Data CasperData
 }
 
 func (tpl *CasperTemplate) GetPath() string {
-	return tpl.Dir + "\\" + tpl.Name
+	var separator = File.separator
+	return tpl.Dir + separator + tpl.Name
 }
 
 func (c *Casper) Create() {
@@ -59,7 +59,7 @@ func (c *Casper) LoadTemplate(cTemplate CasperTemplate) {
 	template.Execute(c.script, cTemplate.Data)
 }
 
-func (c *Casper) ParseString(content string,data CasperData){
+func (c *Casper) ParseString(content string, data CasperData) {
 	var err error
 	c.template, err = c.template.Parse(content)
 	if err != nil {
