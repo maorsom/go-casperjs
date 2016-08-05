@@ -16,9 +16,8 @@ func main() {
 	casper := go_casperjs.Casper{}
 
 	tpl := go_casperjs.CasperTemplate{
-		Dir:  "/Users/maorsom/goProjects/src/github.com/maorsom/go-casperjs/example",
-		Name: "casper_example.js",
-		Data: Url{Url: "http://casperjs.org/"},
+		TemplateFile: "/Users/maorsom/goProjects/src/github.com/maorsom/go-casperjs/examples/casper_example.js",
+		Data:         Url{Url: "http://casperjs.org/"},
 	}
 
 	casper.Create()

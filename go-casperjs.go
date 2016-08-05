@@ -4,6 +4,7 @@ import (
 	"io/ioutil"
 	"os"
 	"os/exec"
+	"path/filepath"
 	"text/template"
 )
 
@@ -23,14 +24,12 @@ type CasperData interface {
 }
 
 type CasperTemplate struct {
-	Name string
-	Dir  string
-	Data CasperData
+	TemplateFile string
+	Data         CasperData
 }
 
 func (tpl *CasperTemplate) GetPath() string {
-	var separator = File.separator
-	return tpl.Dir + separator + tpl.Name
+	return filepath.FromSlash(tpl.TemplateFile)
 }
 
 func (c *Casper) Create() {
