@@ -20,13 +20,31 @@ func main() {
 		Data:         Url{Url: "http://casperjs.org/"},
 	}
 
-	casper.Create()
-	casper.LoadTemplate(tpl)
-	casper.ParseString(`casper.run();`, nil)
+	err := casper.Create()
+
+	if err != nil {
+		panic(err)
+	}
+
+	err = casper.LoadTemplate(tpl)
+
+	if err != nil {
+		panic(err)
+	}
+
+	err = casper.ParseString(`casper.run();`, nil)
+
+	if err != nil {
+		panic(err)
+	}
 
 	defer casper.Close()
 
-	casper.Run()
+	err = casper.Run()
+
+	if err != nil {
+		panic(err)
+	}
 
 	fmt.Println(casper.Output)
 }
